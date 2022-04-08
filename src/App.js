@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { Navbar, PrivateRoute } from "./components";
-import { Category, Explore, ForgotPassword, Offers, Profile, SignIn, SignUp } from "./pages";
+import { Category, CreateListing, Explore, ForgotPassword, Offers, Profile, SignIn, SignUp } from "./pages";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/create-listing" element={<CreateListing />} />
         </Routes>
         <Navbar />
       </Router>
