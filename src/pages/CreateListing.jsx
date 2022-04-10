@@ -10,8 +10,9 @@ import { db } from "../firebase.config";
 import { Spinner } from "../components";
 
 const CreateListing = () => {
-  const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     type: "rent",
     name: "",

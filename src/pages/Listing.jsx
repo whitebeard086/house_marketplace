@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getDoc, docRef, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -38,6 +38,10 @@ const Listing = () => {
 
   if (loading) {
     return <Spinner />;
+  }
+
+  if (listing.length === 0) {
+    return <></>;
   }
 
   return (
