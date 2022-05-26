@@ -41,6 +41,10 @@ const Slider = () => {
     return <Spinner />;
   }
 
+  const formatPrice = price => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     listings && (
       <>
@@ -57,7 +61,7 @@ const Slider = () => {
                 }}>
                 <p className="swiperSlideText">{data.name}</p>
                 <p className="swiperSlidePrice">
-                  ${data.discountedPrice ?? data.regularPrice}
+                  ₦{formatPrice(data.discountedPrice ?? data.regularPrice)}
                   {data.type === "rent" && " / month"}
                 </p>
               </div>

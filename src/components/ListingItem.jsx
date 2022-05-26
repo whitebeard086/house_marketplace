@@ -6,6 +6,10 @@ import bedIcon from "../assets/svg/bedIcon.svg";
 import bathtubIcon from "../assets/svg/bathtubIcon.svg";
 
 const ListingItem = ({ listing, id, onDelete, onEdit }) => {
+  const formatPrice = price => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <li className="categoryListing">
       <Link to={`/category/${listing.type}/${id}`} className="categoryListingLink">
@@ -14,10 +18,10 @@ const ListingItem = ({ listing, id, onDelete, onEdit }) => {
           <p className="categoryListingLocation">{listing.location}</p>
           <p className="categoryListingName">{listing.name}</p>
           <p className="categoryListingPrice">
-            $
+            ₦
             {listing.offer
-              ? listing.discountedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-              : listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              ? formatPrice(listing.discountedPrice)
+              : formatPrice(listing.regularPrice)}
             {listing.type === "rent" && " / Month"}
           </p>
           <div className="categoryListingInfoDiv">

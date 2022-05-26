@@ -44,6 +44,10 @@ const Listing = () => {
     return <></>;
   }
 
+  const formatPrice = price => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <main>
       <Swiper slidesPerView={1} pagination={{ clickable: true }}>
@@ -75,16 +79,14 @@ const Listing = () => {
 
       <div className="listingDetails">
         <p className="listingName">
-          {listing.name} - $
-          {listing.offer
-            ? listing.discountedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            : listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          {listing.name} - ₦
+          {listing.offer ? formatPrice(listing.discountedPrice) : formatPrice(listing.regularPrice)}
         </p>
         <p className="listingLocation">{listing.location}</p>
         <p className="listingType">For {listing.type === "rent" ? "Rent" : "Sale"}</p>
         {listing.offer && (
           <p className="discountPrice">
-            ${listing.regularPrice - listing.discountedPrice} discount
+            ₦{formatPrice(listing.regularPrice - listing.discountedPrice)} discount
           </p>
         )}
         <ul className="listingDetailsList">
